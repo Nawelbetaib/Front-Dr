@@ -1,0 +1,247 @@
+/* Feed Container - Layout principal */
+.feed-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 24px;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+/* Colonne principale (gauche) - Posts */
+.main-content {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Section compositeur de post */
+.post-composer-section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Section des posts */
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.post-item:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Sidebar droite */
+.sidebar {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+/* Section calendrier */
+.calendar-section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Section bannière publicitaire */
+.ad-banner-section {
+  /* Le composant AdBanner a déjà ses propres styles */
+}
+
+/* Section invitation d'amis */
+.invite-friends-section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .feed-container {
+    max-width: 100%;
+    padding: 16px;
+    gap: 20px;
+  }
+
+  .sidebar {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .feed-container {
+    flex-direction: column;
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .main-content {
+    max-width: 100%;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    order: -1; /* Mettre la sidebar en haut sur mobile */
+  }
+
+  /* Sur mobile, on peut réorganiser l'ordre des éléments de la sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Calendrier en premier sur mobile */
+  .calendar-section {
+    order: 1;
+  }
+
+  /* Bannière EMSLIM en deuxième */
+  .ad-banner-section {
+    order: 2;
+  }
+
+  /* Invitation d'amis en dernier */
+  .invite-friends-section {
+    order: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .feed-container {
+    padding: 8px;
+    gap: 12px;
+  }
+
+  .posts-section {
+    gap: 16px;
+  }
+
+  .sidebar {
+    gap: 12px;
+  }
+}
+
+/* Animations et transitions */
+.post-item,
+.calendar-section,
+.invite-friends-section {
+  transition: all 0.3s ease;
+}
+
+.post-item:hover,
+.calendar-section:hover,
+.invite-friends-section:hover {
+  transform: translateY(-2px);
+}
+
+/* Styles pour le scrolling fluide */
+.feed-container {
+  scroll-behavior: smooth;
+}
+
+/* Optimisation pour les écrans très larges */
+@media (min-width: 1400px) {
+  .feed-container {
+    max-width: 1400px;
+  }
+
+  .main-content {
+    max-width: 700px;
+  }
+
+  .sidebar {
+    width: 360px;
+  }
+}
+
+/* Loading states et placeholders */
+.post-item.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.post-item.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Styles pour l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .post-item,
+  .calendar-section,
+  .invite-friends-section {
+    transition: none;
+  }
+
+  .post-item:hover,
+  .calendar-section:hover,
+  .invite-friends-section:hover {
+    transform: none;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
+
+/* Focus states pour l'accessibilité clavier */
+.post-item:focus-within,
+.calendar-section:focus-within,
+.invite-friends-section:focus-within {
+  outline: 2px solid #4A90E2;
+  outline-offset: 2px;
+}
+
+/* Styles pour le mode sombre (préparation future) */
+@media (prefers-color-scheme: dark) {
+  .feed-container {
+    background-color: #1a1a1a;
+  }
+
+  .post-item,
+  .calendar-section,
+  .invite-friends-section {
+    background: #2d2d2d;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .post-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+}

@@ -1,0 +1,234 @@
+/* Overlay pour la notification de succès */
+.success-notification-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 50px;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+/* Container principal de la notification */
+.success-notification-container {
+  display: flex;
+  width: 1365px;
+  height: 94px;
+  padding: 29px 58px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--Foundation-Success-colors-S50, #ECF3EA);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Animation d'apparition */
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Icône de succès */
+.success-icon {
+  width: 30px;
+  height: 30px;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+}
+
+/* Texte de succès */
+.success-text {
+  color: var(--foundation-dark-color-normal-active, #3D4C5E);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 30px */
+  flex: 1;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+
+/* Large screens (≤ 1400px) */
+@media (max-width: 1400px) {
+  .success-notification-container {
+    width: 85%;
+    max-width: 1200px;
+    padding: 26px 50px;
+  }
+
+  .success-text {
+    font-size: 19px;
+  }
+}
+
+/* Large tablets and small desktops (≤ 1200px) */
+@media (max-width: 1200px) {
+  .success-notification-overlay {
+    padding-bottom: 40px;
+  }
+
+  .success-notification-container {
+    width: 90%;
+    max-width: 1000px;
+    height: auto;
+    min-height: 85px;
+    padding: 24px 45px;
+    gap: 12px;
+  }
+
+  .success-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .success-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .success-text {
+    font-size: 18px;
+    line-height: 145%;
+  }
+}
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  .success-notification-overlay {
+    padding-bottom: 35px;
+  }
+
+  .success-notification-container {
+    width: 92%;
+    max-width: 800px;
+    min-height: 80px;
+    padding: 22px 40px;
+    gap: 10px;
+  }
+
+  .success-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .success-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .success-text {
+    font-size: 17px;
+    line-height: 140%;
+  }
+}
+
+/* Small tablets (≤ 768px) */
+@media (max-width: 768px) {
+  .success-notification-overlay {
+    padding-bottom: 30px;
+  }
+
+  .success-notification-container {
+    width: 95%;
+    max-width: 600px;
+    min-height: 75px;
+    padding: 20px 30px;
+    gap: 8px;
+    border-radius: 6px;
+  }
+
+  .success-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .success-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .success-text {
+    font-size: 16px;
+    line-height: 140%;
+  }
+}
+
+/* Mobile devices (≤ 480px) */
+@media (max-width: 480px) {
+  .success-notification-overlay {
+    padding-bottom: 25px;
+  }
+
+  .success-notification-container {
+    width: 98%;
+    max-width: 400px;
+    min-height: 70px;
+    padding: 18px 24px;
+    gap: 6px;
+    border-radius: 6px;
+  }
+
+  .success-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .success-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .success-text {
+    font-size: 14px;
+    line-height: 135%;
+  }
+}
+
+/* Very small devices (≤ 320px) */
+@media (max-width: 320px) {
+  .success-notification-overlay {
+    padding-bottom: 20px;
+  }
+
+  .success-notification-container {
+    width: 99%;
+    max-width: 300px;
+    min-height: 65px;
+    padding: 16px 20px;
+    gap: 5px;
+    border-radius: 4px;
+  }
+
+  .success-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .success-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .success-text {
+    font-size: 12px;
+    line-height: 130%;
+  }
+}

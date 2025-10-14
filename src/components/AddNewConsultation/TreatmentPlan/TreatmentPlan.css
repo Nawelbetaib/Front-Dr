@@ -1,0 +1,297 @@
+/* ====== TREATMENT PLAN STYLES (STEP 4) ====== */
+/* Styles pour le composant TreatmentPlan */
+
+/* Info Box Step 4 */
+.info-box-step4 {
+  display: flex;
+  height: 92px;
+  padding: 19px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 4px;
+  background: var(--Foundation-Warning-colors-W50, #FEF3E9);
+  margin-bottom: 24px;
+}
+
+.info-content-step4 {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.info-icon-step4 {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.info-text-step4 {
+  color: var(--foundation-dark-color-normal-hover, #47586E);
+  text-align: justify;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 448px;
+  height: 54px;
+}
+
+/* Document Selection Step 4 */
+.document-selection-step4 {
+  margin-bottom: 24px;
+}
+
+.document-selection-title-step4 {
+  color: var(--foundation-dark-color-normal-hover, #47586E);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: stretch;
+  margin-bottom: 8px;
+}
+
+.document-selection-description-step4 {
+  color: var(--Foundation-Dark-color-Normal, #546881);
+  text-align: justify;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: stretch;
+  margin-bottom: 16px;
+}
+
+.document-tabs-step4 {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.document-tab-step4 {
+  display: flex;
+  height: 35px;
+  padding: 8px 28px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
+  border: 1px solid var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  background: #FFF;
+  color: var(--foundation-dark-color-normal-hover, #47586E);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.document-tab-step4.active {
+  border-radius: 20px;
+  background: var(--foundation-primary-color-dark-hover, #2F7594);
+  color: white;
+}
+
+.document-tab-step4:hover:not(.active) {
+  background: #F3F4F6;
+}
+
+/* Prescribed Medications Step 4 */
+.prescribed-medications-step4 {
+  margin-bottom: 0px;
+}
+
+.prescribed-medications-title-step4 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: stretch;
+  margin-bottom: 12px;
+}
+
+.prescribed-medications-textarea-step4 {
+  display: flex;
+  height: 149px;
+  padding: 14px 24px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 4px;
+  border: 1px solid var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  background: #FFF;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  width: 100%;
+}
+
+.prescribed-medications-textarea-step4::placeholder {
+  color: #9CA3AF;
+}
+
+.prescribed-medications-textarea-step4:focus {
+  outline: none;
+  border-color: var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  box-shadow: none;
+}
+
+/* Step 4 Actions */
+.form-actions-step4 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.print-record-btn-step4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  color: #374151;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.print-record-btn-step4:hover {
+  background: #F9FAFB;
+  border-color: #9CA3AF;
+}
+
+.print-record-btn-step4:focus {
+  outline: none;
+}
+
+.print-record-btn-step4:active {
+  outline: none;
+}
+
+.save-patient-file-btn-step4 {
+  display: flex;
+  width: 183px;
+  height: 45px;
+  padding: 7px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
+  background: var(--Foundation-Primary-color-Normal, #4FC3F7);
+  border: none;
+  color: var(--Foundation-Surface-color-White, #FFF);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.save-patient-file-btn-step4:hover {
+  background: #29B6F6;
+}
+
+.save-patient-file-btn-step4.saved {
+  background: #4CAF50;
+  transition: all 0.3s ease;
+}
+
+.save-patient-file-btn-step4.saved:hover {
+  background: #45a049;
+}
+
+.save-patient-file-btn-step4 svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Responsive Design pour TreatmentPlan */
+@media (max-width: 768px) {
+  .info-box-step4 {
+    height: auto;
+    padding: 16px;
+  }
+
+  .info-text-step4 {
+    width: 100%;
+    height: auto;
+    font-size: 11px;
+  }
+
+  .document-tabs-step4 {
+    gap: 6px;
+  }
+
+  .document-tab-step4 {
+    padding: 6px 16px;
+    font-size: 11px;
+  }
+
+  .prescribed-medications-textarea-step4 {
+    height: 120px;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .save-patient-file-btn-step4 {
+    width: 160px;
+    height: 40px;
+    padding: 6px 24px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-box-step4 {
+    padding: 12px;
+  }
+
+  .info-text-step4 {
+    font-size: 10px;
+  }
+
+  .document-tabs-step4 {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .document-tab-step4 {
+    width: 100%;
+    padding: 8px 12px;
+  }
+
+  .prescribed-medications-textarea-step4 {
+    height: 100px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .save-patient-file-btn-step4 {
+    width: 140px;
+    height: 36px;
+    font-size: 12px;
+  }
+}

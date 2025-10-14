@@ -1,0 +1,229 @@
+/* Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+.sb, .sb * {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ====== Container ====== */
+.sb{
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 2px 14px rgba(56,96,166,.08);
+}
+
+.sb__header{
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #1890ff;
+  font-size: 24px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 8px;
+}
+
+.sb__header-title {
+  text-align: center;
+}
+
+/* ====== Menus ====== */
+.sb__menu{
+  border-inline-end: 0 !important;
+  box-shadow: none;
+  background: transparent !important;
+  padding: 0 12px;
+  margin-bottom: 0;
+}
+
+.sb__menu .ant-menu-item{
+  height: 36px;
+  margin: 0 0 2px 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 12px;
+  transition: all 0.2s ease;
+  border: none !important;
+}
+
+.sb__menu .ant-menu-item .ant-menu-title-content{
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 2px;
+  display: inline-block;
+}
+
+/* Labels des menu items */
+.sb__menu-label {
+  color: var(--Foundation-Dark-color-Dark, #1D242D);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  margin-left: 2px;
+}
+
+/* ====== Icons ====== */
+.sb-icon{
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+.sb-icon svg{
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 20px;
+  height: 20px;
+}
+
+/* Hover */
+.sb__menu .ant-menu-item:hover{
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* Selected → fond bleu clair selon le design */
+.sb__menu .ant-menu-item-selected{
+  background: #e6f7ff !important;
+  color: #1890ff !important;
+}
+
+.sb__menu .ant-menu-item-selected .sb__menu-label{
+  color: #1890ff !important;
+}
+
+/* ====== MENU GROUP CONTAINER ====== */
+.sb__menu-group {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+/* ====== TOP MENU ====== */
+.sb__menu--top{
+  flex: 1;
+  padding-bottom: 8px;
+}
+
+/* ====== Menu bas ====== */
+.sb__menu--bottom{
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* AntD default indicator off */
+.ant-menu-light .ant-menu-item::after{
+  display: none !important;
+}
+
+/* Remove default ant menu styles */
+.sb__menu.ant-menu-light {
+  background: transparent !important;
+}
+
+.sb__menu .ant-menu-item::after {
+  display: none !important;
+}
+
+/* ====== COLLAPSED ====== */
+.sb--collapsed .sb__header{
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 18px;
+}
+
+.sb--collapsed .sb__header-title {
+  text-align: center;
+}
+
+.sb--collapsed .sb__menu .ant-menu-item{
+  padding: 0 16px !important;
+  justify-content: center;
+}
+
+.sb--collapsed .sb__menu .ant-menu-title-content{
+  display: none !important;
+}
+
+.sb--collapsed .sb__menu-label{
+  display: none !important;
+}
+
+.sb--collapsed .sb-icon{
+  margin-right: 0 !important;
+}
+
+/* Le Layout gère maintenant la largeur collapsed */
+
+/* Tooltips */
+.ant-tooltip-inner{
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Gap spécifique pour Medical Questions avant la barre de séparation */
+.sb__menu .ant-menu-item.sb__menu-item--last {
+  margin-bottom: 20px !important;
+}
+
+/* ====== PROFILE MENU ITEM - COULEURS SPÉCIFIQUES ====== */
+.sb__menu .ant-menu-item.profile-menu-item {
+  background: rgba(219, 234, 254, 1) !important;
+  color: #1D242D !important;
+}
+
+.sb__menu .ant-menu-item.profile-menu-item .sb__menu-label {
+  color: #1D242D !important;
+}
+
+.sb__menu .ant-menu-item.profile-menu-item .sb-icon {
+  color: #1D242D !important;
+}
+
+.sb__menu .ant-menu-item.profile-menu-item .sb-icon svg {
+  stroke: #1D242D !important;
+}
+
+/* Hover state pour Profile */
+.sb__menu .ant-menu-item.profile-menu-item:hover {
+  background: rgba(219, 234, 254, 0.8) !important;
+  color: #1D242D !important;
+}
+
+.sb__menu .ant-menu-item.profile-menu-item:hover .sb__menu-label {
+  color: #1D242D !important;
+}
+
+.sb__menu .ant-menu-item.profile-menu-item:hover .sb-icon {
+  color: #1D242D !important;
+}
+
+.sb__menu .ant-menu-item.profile-menu-item:hover .sb-icon svg {
+  stroke: #1D242D !important;
+}

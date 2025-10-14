@@ -1,0 +1,312 @@
+/* ====== PATIENT CARD STYLES ====== */
+/* Styles pour le composant PatientCard */
+
+.patient-card {
+  display: flex;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  min-height: 200px;
+  padding: 20px 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-radius: 8px;
+  border: 0.25px solid var(--Foundation-primary-blue-Light, #E9F6FF);
+  background: #FFF;
+  box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.10);
+  position: relative;
+  transition: all 0.2s ease; /* Smooth transitions */
+}
+
+.patient-id-container {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--Foundation-primary-blue-Light, #E9F6FF);
+}
+
+.patient-id-text {
+  color: var(--Foundation-primary-blue-Normal, #0066CC);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 133.333% */
+}
+
+.patient-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.ellipse9-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ellipse9-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.patient-online-indicator {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #22C55E;
+  border: 2px solid #FFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.patient-details h3 {
+  color: var(--Foundation-Neutral-Dark-Dark, #1D242D);
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 133.333% */
+  margin: 0;
+}
+
+.patient-details p {
+  color: var(--foundation-dark-color-normal-hover, #47586E);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  margin: 0;
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+
+/* Large tablets and small desktops (≤ 1200px) */
+@media (max-width: 1200px) {
+  .patient-card {
+    max-width: 320px;
+    min-height: 190px;
+    padding: 18px 14px;
+    gap: 14px;
+  }
+
+  .patient-id-container {
+    top: 10px;
+    right: 10px;
+    padding: 3px 7px;
+  }
+
+  .patient-id-text {
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .ellipse9-image {
+    width: 75px;
+    height: 75px;
+  }
+
+  .patient-online-indicator {
+    width: 15px;
+    height: 15px;
+    bottom: 4px;
+    right: 4px;
+  }
+
+  .patient-details h3 {
+    font-size: 17px;
+    line-height: 23px;
+  }
+
+  .patient-details p {
+    font-size: 13px;
+    line-height: 19px;
+  }
+}
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  .patient-card {
+    max-width: 300px;
+    min-height: 180px;
+    padding: 16px 12px;
+    gap: 12px;
+  }
+
+  .patient-id-container {
+    top: 9px;
+    right: 9px;
+    padding: 3px 6px;
+  }
+
+  .patient-id-text {
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .ellipse9-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .patient-online-indicator {
+    width: 14px;
+    height: 14px;
+    bottom: 3px;
+    right: 3px;
+  }
+
+  .patient-details h3 {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .patient-details p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+/* Small tablets (≤ 768px) */
+@media (max-width: 768px) {
+  .patient-card {
+    max-width: 280px;
+    min-height: 170px;
+    padding: 14px 10px;
+    gap: 10px;
+  }
+
+  .patient-id-container {
+    top: 8px;
+    right: 8px;
+    padding: 2px 5px;
+  }
+
+  .patient-id-text {
+    font-size: 9px;
+    line-height: 13px;
+  }
+
+  .ellipse9-image {
+    width: 65px;
+    height: 65px;
+  }
+
+  .patient-online-indicator {
+    width: 13px;
+    height: 13px;
+    bottom: 3px;
+    right: 3px;
+  }
+
+  .patient-details h3 {
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  .patient-details p {
+    font-size: 11px;
+    line-height: 17px;
+  }
+}
+
+/* Mobile devices (≤ 480px) */
+@media (max-width: 480px) {
+  .patient-card {
+    max-width: 260px;
+    min-height: 160px;
+    padding: 12px 8px;
+    gap: 8px;
+  }
+
+  .patient-id-container {
+    top: 6px;
+    right: 6px;
+    padding: 2px 4px;
+  }
+
+  .patient-id-text {
+    font-size: 8px;
+    line-height: 12px;
+  }
+
+  .ellipse9-image {
+    width: 55px;
+    height: 55px;
+  }
+
+  .patient-online-indicator {
+    width: 11px;
+    height: 11px;
+    bottom: 2px;
+    right: 2px;
+  }
+
+  .patient-details h3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .patient-details p {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
+
+/* Very small devices (≤ 320px) */
+@media (max-width: 320px) {
+  .patient-card {
+    max-width: 240px;
+    min-height: 150px;
+    padding: 10px 6px;
+    gap: 6px;
+  }
+
+  .patient-id-container {
+    top: 4px;
+    right: 4px;
+    padding: 1px 3px;
+  }
+
+  .patient-id-text {
+    font-size: 7px;
+    line-height: 11px;
+  }
+
+  .ellipse9-image {
+    width: 45px;
+    height: 45px;
+  }
+
+  .patient-online-indicator {
+    width: 9px;
+    height: 9px;
+    bottom: 1px;
+    right: 1px;
+  }
+
+  .patient-details h3 {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .patient-details p {
+    font-size: 9px;
+    line-height: 15px;
+  }
+}

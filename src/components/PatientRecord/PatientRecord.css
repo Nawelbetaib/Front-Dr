@@ -1,0 +1,814 @@
+.patient-record-container {
+  background: rgba(237, 244, 254, 1);
+  max-width: var(--page-max, 1224px);
+  width: 100%;
+  margin: 0 auto;
+  min-height: 809px;
+  border-radius: 12px;
+  padding: 27px 20px;
+  gap: 10px;
+  opacity: 1;
+  box-sizing: border-box;
+}
+
+
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 31px;
+}
+
+.patient-info-section h2 {
+  color: var(--foundation-neutral-dark-normal-active, #3D4C5E);
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  align-self: stretch;
+  margin: 0 0 5px 0;
+}
+
+.patient-info-section p {
+  color: var(--Foundation-Neutral-Dark-Normal, #546881);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  align-self: stretch;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.add-consultation-btn {
+  display: flex;
+  width: 223px;
+  height: 45px;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #4FC3F7;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.add-consultation-btn:hover {
+  background: #4FC3F7;
+}
+
+.add-consultation-btn:focus,
+.add-consultation-btn:focus-visible,
+.add-consultation-btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.plus-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.btn-text {
+  color: var(--Foundation-Neutral-light-White, #FFF);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.print-record-btn {
+  display: flex !important;
+  width: 156px !important;
+  height: 45px !important;
+  padding: 8px 18px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px !important;
+  border-radius: 12px !important;
+  border: 0.25px solid var(--foundation-neutral-dark-light-hover, #A3ADBB) !important;
+  background: var(--Foundation-Surface-color-White, #FFF) !important;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.print-record-btn:hover {
+  background: #e9ecef;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.print-record-btn:focus,
+.print-record-btn:focus-visible,
+.print-record-btn:focus-within {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  border: 0.25px solid var(--foundation-neutral-dark-light-hover, #A3ADBB) !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}
+
+.print-record-btn:active {
+  background: var(--Foundation-Surface-color-White, #FFF);
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  border: 0.25px solid var(--foundation-neutral-dark-light-hover, #A3ADBB) !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}
+
+.print-record-btn .btn-text {
+  color: var(--foundation-neutral-dark-normal-active, #3D4C5E);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.print-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Force suppression du contour bleu - règle très spécifique */
+button.print-record-btn,
+button.print-record-btn:focus,
+button.print-record-btn:focus-visible,
+button.print-record-btn:active,
+button.print-record-btn:hover {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-focus-ring-color: transparent !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}
+
+.patient-record-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 24px;
+  align-items: start;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.patient-profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.patient-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.patient-avatar {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.patient-avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e0e0e0;
+}
+
+.patient-id {
+  position: absolute;
+  top: -5px;
+  right: 50%;
+  transform: translateX(50%);
+  background: #4FC3F7;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.patient-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.patient-details h3 {
+  color: var(--foundation-neutral-dark-normal-active,#3D4C5E);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  align-self: stretch;
+  margin: 0 0 8px 0;
+}
+
+.patient-details p {
+  color: var(--foundation-neutral-dark-normal-hover, #47586E);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: stretch;
+  margin: 0 0 4px 0;
+}
+
+/* Container PTN ID */
+.patient-id-container {
+  display: flex;
+  width: 96.224px;
+  height: 25.13px;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: var(--Foundation-primary-blue-Light, #E9F6FF);
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+}
+
+.patient-id-text {
+  color: var(--Foundation-primary-blue-Dark, #177ABF);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.ellipse9-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.ellipse9-image {
+  width: 83px;
+  height: 83px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+/* Point vert d'indicateur en ligne (même style que SubMenu) */
+.patient-online-indicator {
+  position: absolute;
+  bottom: 10px;
+  left: calc(50% - 41.5px + 65px);
+  width: 12px;
+  height: 12px;
+  background: rgba(0, 136, 34, 1);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.medical-reports-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.allergies-past-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 0px;
+  width: 100%;
+}
+
+/* =============== Responsive =============== */
+@media (max-width: 1440px) {
+  :root {
+    --patient-record-width: 95%;
+    --grid-gap: 22px;
+    --profile-width: 340px;
+  }
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --patient-record-width: 90%;
+    --grid-gap: 20px;
+    --profile-width: 320px;
+  }
+
+  .patient-record-content {
+    grid-template-columns: var(--profile-width) 1fr;
+    gap: var(--grid-gap);
+  }
+
+  .patient-record-container {
+    max-width: var(--patient-record-width);
+    padding: 25px 18px;
+  }
+}
+
+/* 1100px: adjust layout */
+@media (max-width: 1100px) {
+  .patient-record-container {
+    padding: 22px 16px;
+    border-radius: 10px;
+  }
+
+  .patient-record-content {
+    grid-template-columns: 300px 1fr;
+    gap: 18px;
+  }
+
+  .header-content {
+    margin-bottom: 28px;
+  }
+
+  .header-actions {
+    gap: 12px;
+  }
+
+  .add-consultation-btn {
+    width: 200px;
+    height: 42px;
+    padding: 10px;
+  }
+
+  .print-record-btn {
+    width: 140px;
+    height: 42px;
+    padding: 6px 16px;
+  }
+}
+
+/* 900px: reduced padding */
+@media (max-width: 900px) {
+  .patient-record-container {
+    padding: 20px 14px;
+    border-radius: 8px;
+  }
+
+  .patient-info-section h2 {
+    font-size: 18px;
+  }
+
+  .patient-info-section p {
+    font-size: 13px;
+  }
+
+  .header-content {
+    margin-bottom: 25px;
+  }
+
+  .patient-record-content {
+    grid-template-columns: 280px 1fr;
+    gap: 16px;
+  }
+
+  .patient-card {
+    padding: 20px 16px;
+    border-radius: 10px;
+  }
+
+  .patient-details h3 {
+    font-size: 15px;
+  }
+
+  .patient-details p {
+    font-size: 13px;
+  }
+
+  .allergies-past-container {
+    gap: 16px;
+  }
+}
+
+/* 720px: single column stack */
+@media (max-width: 720px) {
+  .patient-record-container {
+    padding: 18px 12px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .patient-info-section h2 {
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .patient-info-section p {
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .add-consultation-btn {
+    width: 180px;
+    height: 40px;
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .print-record-btn {
+    width: 120px;
+    height: 40px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  .plus-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .print-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .patient-record-content {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .patient-profile-section {
+    gap: 16px;
+  }
+
+  .patient-card {
+    padding: 18px 14px;
+    border-radius: 8px;
+  }
+
+  .ellipse9-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .patient-online-indicator {
+    width: 10px;
+    height: 10px;
+    left: calc(50% - 35px + 55px);
+  }
+
+  .patient-id-container {
+    width: 85px;
+    height: 22px;
+    padding: 3px 10px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .patient-id-text {
+    font-size: 11px;
+  }
+
+  .patient-details h3 {
+    font-size: 14px;
+  }
+
+  .patient-details p {
+    font-size: 12px;
+  }
+
+  .medical-reports-section {
+    gap: 20px;
+  }
+
+  .allergies-past-container {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+/* 480px: compact spacing */
+@media (max-width: 480px) {
+  .patient-record-container {
+    padding: 16px 10px;
+    border-radius: 6px;
+    min-height: auto;
+  }
+
+  .header-content {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .patient-info-section h2 {
+    font-size: 15px;
+  }
+
+  .patient-info-section p {
+    font-size: 11px;
+  }
+
+  .header-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .add-consultation-btn,
+  .print-record-btn {
+    width: 100%;
+    height: 38px;
+    padding: 6px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  .add-consultation-btn {
+    order: 1;
+  }
+
+  .print-record-btn {
+    order: 2;
+  }
+
+  .plus-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .print-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .patient-record-content {
+    gap: 12px;
+  }
+
+  .patient-profile-section {
+    gap: 14px;
+  }
+
+  .patient-card {
+    padding: 16px 12px;
+    border-radius: 6px;
+  }
+
+  .ellipse9-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .patient-online-indicator {
+    width: 8px;
+    height: 8px;
+    left: calc(50% - 30px + 48px);
+    bottom: 8px;
+  }
+
+  .patient-id-container {
+    width: 75px;
+    height: 20px;
+    padding: 2px 8px;
+    top: 8px;
+    right: 8px;
+    border-radius: 20px;
+  }
+
+  .patient-id-text {
+    font-size: 10px;
+  }
+
+  .patient-details h3 {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .patient-details p {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+
+  .medical-reports-section {
+    gap: 16px;
+  }
+
+  .allergies-past-container {
+    gap: 12px;
+  }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ====== STYLES D'IMPRESSION ====== */
+@media print {
+  /* Masquer les éléments non nécessaires à l'impression */
+  .header-actions,
+  .sidebar,
+  .sb,
+  button,
+  .ant-menu,
+  .print-record-btn,
+  .add-consultation-btn {
+    display: none !important;
+  }
+
+  /* Configuration de la page */
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  /* Container principal pour l'impression */
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #000;
+    background: white;
+  }
+
+  /* Header du document imprimé */
+  .patient-record-container::before {
+    content: "PATIENT MEDICAL RECORD";
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+  }
+
+  /* Layout d'impression */
+  .patient-record-container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  .patient-record-content {
+    display: block !important;
+    width: 100% !important;
+    gap: 0 !important;
+  }
+
+  /* Sections pour l'impression */
+  .patient-profile-section,
+  .medical-reports-section {
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    page-break-inside: avoid;
+  }
+
+  /* Cartes et conteneurs */
+  .profile-card,
+  .test-reports-card,
+  .previous-card,
+  .allergies-card,
+  .past-card {
+    border: 1px solid #ddd !important;
+    margin-bottom: 15px !important;
+    padding: 15px !important;
+    background: white !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Titres des sections */
+  .profile-card h2,
+  .test-reports-card h2,
+  .previous-card h2,
+  .allergies-card h2,
+  .past-card h2 {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    margin-bottom: 10px !important;
+    color: #000 !important;
+    border-bottom: 1px solid #ccc !important;
+    padding-bottom: 5px !important;
+  }
+
+  /* Informations patient */
+  .general-info,
+  .insurance-info,
+  .emergency-contact {
+    margin-bottom: 15px !important;
+  }
+
+  .general-info h3,
+  .insurance-info h3,
+  .emergency-contact h3 {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    margin-bottom: 8px !important;
+    color: #333 !important;
+  }
+
+  /* Tableaux et listes */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 10px !important;
+  }
+
+  table th,
+  table td {
+    border: 1px solid #ddd !important;
+    padding: 8px !important;
+    text-align: left !important;
+    font-size: 11px !important;
+  }
+
+  table th {
+    background-color: #f5f5f5 !important;
+    font-weight: bold !important;
+  }
+
+  /* Textes et paragraphes */
+  p, span, div {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 5px !important;
+  }
+
+  /* Images et icônes */
+  img {
+    max-width: 100px !important;
+    height: auto !important;
+  }
+
+  /* Saut de page */
+  .page-break {
+    page-break-before: always;
+  }
+
+  /* Footer du document */
+  .patient-record-container::after {
+    content: "Generated on " attr(data-print-date);
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    color: #666;
+  }
+}

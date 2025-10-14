@@ -1,0 +1,129 @@
+/* Calendar Container */
+.calendar-container {
+  display: flex;
+  width: 352px;
+  padding: 24px;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.15);
+}
+
+/* Calendar Header */
+.calendar-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.nav-button:hover {
+  opacity: 0.7;
+}
+
+.nav-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.month-year {
+  color: var(--Base-Gray-80, #4A5660);
+  text-align: center;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: "Avenir Next LT Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px; /* 100% */
+  margin: 0;
+}
+
+/* Days Header */
+.days-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.day-header {
+  display: flex;
+  width: 30px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #B5BEC6;
+  text-align: center;
+  font-family: "Avenir Next LT Pro";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  text-transform: uppercase;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.calendar-date {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #4A5660;
+  text-align: center;
+  font-family: "Avenir Next LT Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  transition: all 0.2s ease;
+}
+
+.calendar-date.clickable {
+  cursor: pointer;
+}
+
+.calendar-date.clickable:hover {
+  background: #F0F4F8;
+  border-radius: 15px;
+}
+
+.calendar-date.selected {
+  border-radius: 29px;
+  background: var(--Foundation-Primary-color-Normal, #4FC3F7);
+  color: #FFF;
+}
+
+.calendar-date.empty {
+  visibility: hidden;
+}
+
+/* CSS Variables */
+:root {
+  --Base-Gray-80: #4A5660;
+  --Foundation-Primary-color-Normal: #4FC3F7;
+}

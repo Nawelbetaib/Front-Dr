@@ -1,0 +1,62 @@
+.post-composer-demo {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+.demo-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.demo-header h1 {
+  color: #1D242D;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.demo-header p {
+  color: #546881;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.demo-content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.demo-info {
+  background: #F5F7F9;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #B2BBC6;
+}
+
+.demo-info h3 {
+  color: #1D242D;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.demo-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.demo-info li {
+  color: #546881;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  padding-left: 0;
+}
+
+.demo-info li:last-child {
+  margin-bottom: 0;
+}

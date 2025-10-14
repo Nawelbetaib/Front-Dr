@@ -1,0 +1,436 @@
+.allergies-container {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  height: 231px;
+  padding: 20px 26px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.15);
+  box-sizing: border-box;
+}
+
+.allergies-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.allergies-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.allergies-text {
+  color: var(--Foundation-Dark-color-Dark, #1D242D);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+}
+
+.vaccination-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  margin-left: 15px;
+}
+
+.vaccination-text {
+  color: var(--foundation-dark-color-light-hover, #A3ADBB);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+}
+
+.modify-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.allergies-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.allergies-description {
+  color: var(--Foundation-Dark-color-Normal, #546881);
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px; /* 200% */
+  align-self: stretch;
+  margin: 0;
+}
+
+.grandfather-container {
+  display: flex;
+  height: 42px;
+  padding: 7px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 4px;
+  background: var(--foundation-surface-color-white-hover, #F6FCFF);
+  box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.15);
+}
+
+.grandfather-text {
+  color: var(--foundation-dark-color-normal-hover, #47586E);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heart-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.other-notes-container {
+  display: flex;
+  height: 42px;
+  padding: 7px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 4px;
+  background: var(--foundation-surface-color-white-hover, #F6FCFF);
+  box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.15);
+}
+
+.other-notes-text {
+  color: var(--foundation-dark-color-normal-hover, #47586E);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.x-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* =============== Responsive =============== */
+@media (max-width: 1440px) {
+  :root {
+    --allergies-container-width: 95%;
+    --allergies-gap: 9px;
+    --allergies-padding: 18px 24px;
+  }
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --allergies-container-width: 90%;
+    --allergies-gap: 8px;
+    --allergies-padding: 16px 22px;
+  }
+
+  .allergies-container {
+    padding: var(--allergies-padding);
+    gap: var(--allergies-gap);
+    height: 220px;
+  }
+
+  .allergies-content {
+    gap: var(--allergies-gap);
+  }
+}
+
+/* 1100px: adjust layout */
+@media (max-width: 1100px) {
+  .allergies-container {
+    padding: 16px 20px;
+    gap: 8px;
+    height: 210px;
+    border-radius: 10px;
+  }
+
+  .header-left {
+    gap: 6px;
+  }
+
+  .allergies-icon,
+  .vaccination-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .modify-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .allergies-text,
+  .vaccination-text {
+    font-size: 11px;
+    line-height: 18px;
+  }
+
+  .grandfather-container,
+  .other-notes-container {
+    height: 38px;
+    padding: 6px;
+  }
+
+  .grandfather-text,
+  .other-notes-text {
+    font-size: 11px;
+    line-height: 18px;
+    gap: 6px;
+  }
+
+  .heart-icon,
+  .x-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* 900px: reduced padding */
+@media (max-width: 900px) {
+  .allergies-container {
+    padding: 14px 18px;
+    gap: 7px;
+    height: 200px;
+    border-radius: 8px;
+  }
+
+  .header-left {
+    gap: 5px;
+  }
+
+  .allergies-icon,
+  .vaccination-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .vaccination-icon {
+    margin-left: 12px;
+  }
+
+  .modify-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .allergies-text,
+  .vaccination-text {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .allergies-description {
+    font-size: 9px;
+    line-height: 18px;
+  }
+
+  .allergies-content {
+    gap: 7px;
+  }
+
+  .grandfather-container,
+  .other-notes-container {
+    height: 36px;
+    padding: 5px;
+    border-radius: 3px;
+  }
+
+  .grandfather-text,
+  .other-notes-text {
+    font-size: 10px;
+    line-height: 16px;
+    gap: 5px;
+  }
+
+  .heart-icon,
+  .x-icon {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+/* 720px: single column stack */
+@media (max-width: 720px) {
+  .allergies-container {
+    padding: 12px 16px;
+    gap: 6px;
+    height: 180px;
+    border-radius: 6px;
+  }
+
+  .allergies-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .header-left {
+    gap: 4px;
+  }
+
+  .allergies-icon,
+  .vaccination-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .vaccination-icon {
+    margin-left: 10px;
+  }
+
+  .modify-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .allergies-text,
+  .vaccination-text {
+    font-size: 9px;
+    line-height: 14px;
+  }
+
+  .allergies-description {
+    font-size: 8px;
+    line-height: 16px;
+  }
+
+  .allergies-content {
+    gap: 6px;
+  }
+
+  .grandfather-container,
+  .other-notes-container {
+    height: 32px;
+    padding: 4px;
+    border-radius: 2px;
+  }
+
+  .grandfather-text,
+  .other-notes-text {
+    font-size: 9px;
+    line-height: 14px;
+    gap: 4px;
+  }
+
+  .heart-icon,
+  .x-icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* 480px: compact spacing */
+@media (max-width: 480px) {
+  .allergies-container {
+    padding: 10px 14px;
+    gap: 5px;
+    height: 160px;
+    border-radius: 4px;
+  }
+
+  .allergies-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .header-left {
+    gap: 3px;
+  }
+
+  .allergies-icon,
+  .vaccination-icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .vaccination-icon {
+    margin-left: 8px;
+  }
+
+  .modify-icon {
+    width: 10px;
+    height: 10px;
+    align-self: flex-end;
+  }
+
+  .allergies-text,
+  .vaccination-text {
+    font-size: 8px;
+    line-height: 12px;
+  }
+
+  .allergies-description {
+    font-size: 7px;
+    line-height: 14px;
+  }
+
+  .allergies-content {
+    gap: 4px;
+  }
+
+  .grandfather-container,
+  .other-notes-container {
+    height: 28px;
+    padding: 3px;
+    border-radius: 2px;
+  }
+
+  .grandfather-text,
+  .other-notes-text {
+    font-size: 8px;
+    line-height: 12px;
+    gap: 3px;
+  }
+
+  .heart-icon,
+  .x-icon {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

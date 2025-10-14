@@ -1,0 +1,452 @@
+.past-container {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  min-height: 231px;
+  padding: 20px 26px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.15);
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.past-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.past-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.past-text {
+  color: var(--Foundation-Dark-color-Dark, #1D242D);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+}
+
+.dna-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  margin-left: 15px;
+}
+
+.family-text {
+  color: var(--foundation-dark-color-light-hover, #A3ADBB);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+}
+
+.modify-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.past-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.illness-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.illness-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: start;
+}
+
+.illness-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.illness-date,
+.illness-description {
+  margin-left: 0;
+  text-align: left;
+  padding-left: 0;
+  position: relative;
+  left: 0;
+}
+
+/* Forcer l'alignement parfait */
+.illness-content .illness-date,
+.illness-content .illness-description {
+  text-indent: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.ig-icon {
+  display: flex;
+  width: 24px;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  object-fit: contain;
+}
+
+.illness-date {
+  color: var(--foundation-dark-color-normal-active, #3D4C5E);
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 200% */
+  align-self: stretch;
+}
+
+.illness-description {
+  color: #000;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+  align-self: stretch;
+  margin-left: 24px; /* Indentation pour aligner avec le texte */
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+
+/* Large tablets and small desktops (≤ 1200px) */
+@media (max-width: 1200px) {
+  .past-container {
+    width: auto;
+    max-width: 100%;
+    min-height: 220px;
+    padding: 18px 24px;
+    gap: 9px;
+  }
+
+  .past-text {
+    font-size: 11px;
+    line-height: 18px;
+  }
+
+  .family-text {
+    font-size: 11px;
+    line-height: 18px;
+  }
+
+  .past-icon,
+  .dna-icon,
+  .modify-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .ig-icon {
+    width: 22px;
+  }
+
+  .illness-date {
+    font-size: 9px;
+    line-height: 18px;
+  }
+
+  .illness-description {
+    font-size: 11px;
+    line-height: 18px;
+    margin-left: 22px;
+  }
+
+  .past-content {
+    gap: 9px;
+  }
+
+  .illness-content {
+    gap: 1px;
+  }
+
+  .header-left {
+    gap: 7px;
+  }
+
+  .dna-icon {
+    margin-left: 13px;
+  }
+}
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  .past-container {
+    width: auto;
+    max-width: 100%;
+    min-height: 210px;
+    padding: 16px 22px;
+    gap: 8px;
+  }
+
+  .past-text {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .family-text {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .past-icon,
+  .dna-icon,
+  .modify-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ig-icon {
+    width: 20px;
+  }
+
+  .illness-date {
+    font-size: 8px;
+    line-height: 16px;
+  }
+
+  .illness-description {
+    font-size: 10px;
+    line-height: 16px;
+    margin-left: 20px;
+  }
+
+  .past-content {
+    gap: 8px;
+  }
+
+  .illness-content {
+    gap: 1px;
+  }
+
+  .header-left {
+    gap: 6px;
+  }
+
+  .dna-icon {
+    margin-left: 12px;
+  }
+}
+
+/* Small tablets (≤ 768px) */
+@media (max-width: 768px) {
+  .past-container {
+    width: auto;
+    max-width: 100%;
+    min-height: 200px;
+    padding: 14px 20px;
+    gap: 7px;
+  }
+
+  .past-text {
+    font-size: 9px;
+    line-height: 14px;
+  }
+
+  .family-text {
+    font-size: 9px;
+    line-height: 14px;
+  }
+
+  .past-icon,
+  .dna-icon,
+  .modify-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .ig-icon {
+    width: 18px;
+  }
+
+  .illness-date {
+    font-size: 7px;
+    line-height: 14px;
+  }
+
+  .illness-description {
+    font-size: 9px;
+    line-height: 14px;
+    margin-left: 18px;
+  }
+
+  .past-content {
+    gap: 7px;
+  }
+
+  .illness-content {
+    gap: 1px;
+  }
+
+  .header-left {
+    gap: 5px;
+  }
+
+  .dna-icon {
+    margin-left: 10px;
+  }
+
+  .illness-header {
+    gap: 6px;
+  }
+}
+
+/* Mobile devices (≤ 480px) */
+@media (max-width: 480px) {
+  .past-container {
+    width: auto;
+    max-width: 100%;
+    min-height: 180px;
+    padding: 12px 16px;
+    gap: 6px;
+  }
+
+  .past-text {
+    font-size: 8px;
+    line-height: 12px;
+  }
+
+  .family-text {
+    font-size: 8px;
+    line-height: 12px;
+  }
+
+  .past-icon,
+  .dna-icon,
+  .modify-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .ig-icon {
+    width: 16px;
+  }
+
+  .illness-date {
+    font-size: 6px;
+    line-height: 12px;
+  }
+
+  .illness-description {
+    font-size: 8px;
+    line-height: 12px;
+    margin-left: 16px;
+  }
+
+  .past-content {
+    gap: 6px;
+  }
+
+  .illness-content {
+    gap: 0px;
+  }
+
+  .header-left {
+    gap: 4px;
+  }
+
+  .dna-icon {
+    margin-left: 8px;
+  }
+
+  .illness-header {
+    gap: 6px;
+  }
+}
+
+/* Very small devices (≤ 320px) */
+@media (max-width: 320px) {
+  .past-container {
+    width: auto;
+    max-width: 100%;
+    min-height: 160px;
+    padding: 10px 14px;
+    gap: 5px;
+  }
+
+  .past-text {
+    font-size: 7px;
+    line-height: 10px;
+  }
+
+  .family-text {
+    font-size: 7px;
+    line-height: 10px;
+  }
+
+  .past-icon,
+  .dna-icon,
+  .modify-icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .ig-icon {
+    width: 14px;
+  }
+
+  .illness-date {
+    font-size: 5px;
+    line-height: 10px;
+  }
+
+  .illness-description {
+    font-size: 7px;
+    line-height: 10px;
+    margin-left: 14px;
+  }
+
+  .past-content {
+    gap: 5px;
+  }
+
+  .illness-content {
+    gap: 0px;
+  }
+
+  .header-left {
+    gap: 3px;
+  }
+
+  .dna-icon {
+    margin-left: 6px;
+  }
+
+  .illness-header {
+    gap: 4px;
+  }
+}

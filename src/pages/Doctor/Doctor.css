@@ -1,0 +1,98 @@
+.doctor-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px; /* Width of sidebar */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+.page-content {
+  flex: 1;
+  padding: 0;
+  overflow-y: auto;
+}
+
+/* Placeholder styles for different sections */
+.dashboard-placeholder,
+.appointments-placeholder,
+.patients-placeholder,
+.default-placeholder {
+  padding: 40px;
+  text-align: center;
+  background: white;
+  margin: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-placeholder h2,
+.appointments-placeholder h2,
+.patients-placeholder h2,
+.default-placeholder h2 {
+  margin: 0 0 15px 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}
+
+.dashboard-placeholder p,
+.appointments-placeholder p,
+.patients-placeholder p,
+.default-placeholder p {
+  margin: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+/* Sidebar overlay for mobile */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .sidebar-overlay {
+    display: block;
+  }
+
+  .page-content {
+    padding: 0;
+  }
+
+  .dashboard-placeholder,
+  .appointments-placeholder,
+  .patients-placeholder,
+  .default-placeholder {
+    margin: 10px;
+    padding: 20px;
+  }
+}
+
+/* When sidebar is collapsed */
+.doctor-page.sidebar-collapsed .main-content {
+  margin-left: 70px;
+}
+
+@media (max-width: 768px) {
+  .doctor-page.sidebar-collapsed .main-content {
+    margin-left: 0;
+  }
+}

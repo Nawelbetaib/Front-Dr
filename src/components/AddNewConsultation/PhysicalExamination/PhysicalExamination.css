@@ -1,0 +1,330 @@
+/* ====== PHYSICAL EXAMINATION STYLES ====== */
+/* Styles pour le composant PhysicalExamination */
+
+/* Form Styles */
+.consultation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  color: #000;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: stretch;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.next-step-btn {
+  display: flex;
+  width: 153px;
+  height: 36px;
+  padding: 7px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  background: var(--Foundation-Primary-color-Normal, #4FC3F7);
+  border: none;
+  color: var(--Foundation-Surface-color-White, #FFF);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1; /* Ligne unique pour alignement */
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.next-step-btn:hover {
+  background: #29B6F6;
+}
+
+.next-step-btn svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Vital Signs Grid */
+.vital-signs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.vital-sign-item {
+  display: flex;
+  width: 249px;
+  height: 55px;
+  padding: 2px 23px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--foundation-neutral-light-light-hover, #F5F7F9);
+}
+
+.vital-sign-icon {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  padding: 4px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 15px;
+  background: var(--Foundation-primary-blue-Light, #E9F6FF);
+  flex-shrink: 0;
+}
+
+.vital-sign-icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.vital-sign-label {
+  color: var(--foundation-neutral-dark-normal-active, #3D4C5E);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+  flex: 1;
+}
+
+.vital-sign-value {
+  display: flex;
+  width: 88px;
+  height: 29px;
+  padding: 4px 11px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 0.2px solid var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  background: var(--Foundation-Surface-color-White, #FFF);
+  color: var(--foundation-neutral-dark-normal-active, #3D4C5E);
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 166.667% */
+  border: none;
+  outline: none;
+}
+
+.vital-sign-value:focus {
+  outline: none;
+  border: 0.2px solid var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  box-shadow: none;
+}
+
+/* Styles pour les titres des sections */
+.vital-signs-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.vital-signs-title {
+  color: #000;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.vital-signs-subtitle {
+  color: #000;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Styles pour les containers de textarea */
+.exam-textarea-container {
+  display: flex;
+  height: 70px;
+  padding: 14px 24px;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  background: #FFF;
+}
+
+.exam-textarea {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: Poppins;
+  font-size: 13px;
+  color: #3D4C5E;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  padding: 0;
+}
+
+.exam-textarea::placeholder {
+  color: var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.exam-textarea:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Responsive Design pour PhysicalExamination */
+@media (max-width: 768px) {
+  .consultation-form {
+    gap: 20px;
+  }
+
+  .vital-signs-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .vital-sign-item {
+    width: 100%;
+    height: 50px;
+    padding: 2px 16px;
+  }
+
+  .vital-sign-label {
+    font-size: 11px;
+  }
+
+  .vital-sign-value {
+    width: 80px;
+    height: 26px;
+    font-size: 11px;
+  }
+
+  .vital-signs-title,
+  .vital-signs-subtitle {
+    font-size: 14px;
+  }
+
+  .form-label {
+    font-size: 14px;
+  }
+
+  .exam-textarea-container {
+    height: 60px;
+    padding: 12px 16px;
+  }
+
+  .exam-textarea {
+    font-size: 12px;
+  }
+
+  .exam-textarea::placeholder {
+    font-size: 12px;
+  }
+
+  .next-step-btn {
+    width: 140px;
+    height: 32px;
+    padding: 6px 24px;
+    font-size: 13px;
+  }
+
+  .form-actions {
+    padding-top: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .consultation-form {
+    gap: 16px;
+  }
+
+  .vital-signs-grid {
+    gap: 8px;
+  }
+
+  .vital-sign-item {
+    height: 45px;
+    padding: 2px 12px;
+    gap: 8px;
+  }
+
+  .vital-sign-label {
+    font-size: 10px;
+  }
+
+  .vital-sign-value {
+    width: 70px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .vital-signs-title,
+  .vital-signs-subtitle {
+    font-size: 13px;
+  }
+
+  .form-label {
+    font-size: 13px;
+  }
+
+  .exam-textarea-container {
+    height: 50px;
+    padding: 10px 12px;
+  }
+
+  .exam-textarea {
+    font-size: 11px;
+  }
+
+  .exam-textarea::placeholder {
+    font-size: 11px;
+  }
+
+  .next-step-btn {
+    width: 120px;
+    height: 30px;
+    padding: 5px 16px;
+    font-size: 12px;
+  }
+
+  .form-actions {
+    padding-top: 12px;
+  }
+}

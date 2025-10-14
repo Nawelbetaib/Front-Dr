@@ -1,0 +1,547 @@
+/* AdBanner Container */
+.ad-banner {
+  background: linear-gradient(135deg, #E8F0FF 0%, #B8D4FF 50%, #4A90E2 100%);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(74, 144, 226, 0.2);
+}
+
+/* Background Pattern */
+.ad-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.1) 75%);
+  background-size: 30px 30px;
+  background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Header Section */
+.ad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-placeholder {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #4A90E2;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4A90E2;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.social-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.social-icon.facebook {
+  background: #1877F2;
+}
+
+.social-icon.twitter {
+  background: #1DA1F2;
+}
+
+.social-icon.instagram {
+  background: linear-gradient(45deg, #F56040, #E1306C, #C13584, #833AB4);
+}
+
+.social-icon.linkedin {
+  background: #0A66C2;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Content */
+.ad-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Machine Section */
+.machine-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.machine-container {
+  position: relative;
+  width: 280px;
+  height: 320px;
+}
+
+.emslim-machine {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Machine Screen */
+.machine-screen {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 60px;
+  background: #2C3E50;
+  border-radius: 8px;
+  border: 3px solid #34495E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.screen-content {
+  width: 100%;
+  height: 100%;
+  background: #4A90E2;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.screen-icons {
+  display: flex;
+  gap: 6px;
+}
+
+.screen-icon {
+  width: 12px;
+  height: 12px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+/* Machine Body */
+.machine-body {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 180px;
+  background: linear-gradient(145deg, #F8F9FA, #E9ECEF);
+  border-radius: 12px;
+  border: 2px solid #DEE2E6;
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.1),
+    inset 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Machine Handles */
+.machine-handles {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.handle {
+  width: 20px;
+  height: 60px;
+  background: linear-gradient(145deg, #ADB5BD, #6C757D);
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.handle::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 40px;
+  background: #4A90E2;
+  border-radius: 6px;
+}
+
+/* Machine Base with Wheels */
+.machine-base {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 40px;
+  background: #6C757D;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.wheel {
+  width: 24px;
+  height: 24px;
+  background: #495057;
+  border-radius: 50%;
+  border: 2px solid #343A40;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Info Section */
+.info-section {
+  flex: 1;
+  color: white;
+}
+
+.brand-title {
+  margin-bottom: 24px;
+}
+
+.emslim-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #2C3E50;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.pro-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
+  color: #FF8C42;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.technology-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C3E50;
+  margin: 4px 0 0 0;
+  letter-spacing: 3px;
+}
+
+/* Features List */
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.check-icon {
+  flex-shrink: 0;
+}
+
+.feature-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2C3E50;
+  line-height: 1.4;
+}
+
+/* Footer Section */
+.ad-footer {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.main-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2C3E50;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.main-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #34495E;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.view-all-btn {
+  background: #4FC3F7;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.3);
+}
+
+.view-all-btn:hover {
+  background: #3FB8EC;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(79, 195, 247, 0.4);
+}
+
+.view-all-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .ad-content {
+    gap: 24px;
+  }
+
+  .machine-container {
+    width: 240px;
+    height: 280px;
+  }
+
+  .emslim-title {
+    font-size: 32px;
+  }
+
+  .main-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ad-banner {
+    padding: 20px;
+  }
+
+  .ad-content {
+    flex-direction: column;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .machine-container {
+    width: 200px;
+    height: 240px;
+  }
+
+  .machine-body {
+    width: 160px;
+    height: 140px;
+  }
+
+  .emslim-title {
+    font-size: 28px;
+  }
+
+  .pro-text {
+    font-size: 24px;
+  }
+
+  .technology-text {
+    font-size: 14px;
+  }
+
+  .main-title {
+    font-size: 22px;
+  }
+
+  .main-description {
+    font-size: 14px;
+  }
+
+  .social-icons {
+    gap: 6px;
+  }
+
+  .social-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ad-banner {
+    padding: 16px;
+    margin: 16px 0;
+  }
+
+  .ad-header {
+    margin-bottom: 20px;
+  }
+
+  .logo-placeholder {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+
+  .machine-container {
+    width: 180px;
+    height: 200px;
+  }
+
+  .machine-screen {
+    width: 60px;
+    height: 45px;
+  }
+
+  .machine-body {
+    width: 140px;
+    height: 120px;
+  }
+
+  .emslim-title {
+    font-size: 24px;
+  }
+
+  .pro-text {
+    font-size: 20px;
+  }
+
+  .technology-text {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .feature-item {
+    padding: 10px 12px;
+  }
+
+  .feature-text {
+    font-size: 13px;
+  }
+
+  .main-title {
+    font-size: 20px;
+  }
+
+  .main-description {
+    font-size: 13px;
+  }
+
+  .view-all-btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+/* Animation for machine screen */
+@keyframes screenPulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
+}
+
+.screen-icon {
+  animation: screenPulse 2s ease-in-out infinite;
+}
+
+.screen-icon:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.screen-icon:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Hover effects for feature items */
+.feature-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Additional visual enhancements */
+.machine-screen::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.handle::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  width: 16px;
+  height: 50px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+  border-radius: 8px;
+  pointer-events: none;
+}

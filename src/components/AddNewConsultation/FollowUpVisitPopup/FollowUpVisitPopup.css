@@ -1,0 +1,349 @@
+/* ====== FOLLOW-UP VISIT POPUP STYLES ====== */
+
+/* Overlay */
+.followup-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Container principal */
+.followup-popup-container {
+  position: relative;
+  width: 100%;
+  max-width: 1020px;
+  height: auto;
+  min-height: 225px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #F0F3F8;
+  box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  margin: 0 16px; /* Marge pour éviter de toucher les bords */
+}
+
+/* Bouton de fermeture */
+.followup-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.followup-close-btn:hover {
+  opacity: 0.7;
+}
+
+.followup-close-btn svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Titre "Follow-up visit" */
+.followup-title {
+  color: var(--Foundation-Dark-color-Dark, #1D242D);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+  align-self: stretch;
+  margin: 0;
+}
+
+/* Description */
+.followup-description {
+  color: var(--foundation-dark-color-normal-active, #3D4C5E);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 125% */
+  height: auto;
+  align-self: stretch;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+/* Bouton "recommend a follow-up visit" */
+.followup-recommend-btn {
+  display: flex;
+  height: 36px;
+  padding: 7px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  background: var(--Foundation-Primary-color-Normal, #4FC3F7);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.followup-recommend-btn:hover {
+  background: #29B6F6;
+}
+
+.followup-recommend-btn:active {
+  background: #0288D1;
+}
+
+/* Texte du bouton */
+.followup-recommend-text {
+  color: var(--Foundation-Surface-color-White, #FFF);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+
+/* Large tablets and small desktops (≤ 1200px) */
+@media (max-width: 1200px) {
+  .followup-popup-container {
+    width: 85vw;
+    max-width: 900px;
+    height: auto;
+    min-height: 200px;
+    padding: 18px 24px;
+    gap: 10px;
+  }
+
+  .followup-close-btn {
+    top: 14px;
+    right: 14px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .followup-close-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .followup-title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .followup-description {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 0 16px;
+  }
+
+  .followup-recommend-btn {
+    height: 34px;
+    padding: 6px 40px;
+  }
+
+  .followup-recommend-text {
+    font-size: 13px;
+  }
+}
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  .followup-popup-container {
+    width: 90vw;
+    max-width: 800px;
+    padding: 16px 20px;
+    gap: 8px;
+  }
+
+  .followup-close-btn {
+    top: 12px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .followup-close-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .followup-title {
+    font-size: 17px;
+    line-height: 21px;
+  }
+
+  .followup-description {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0 12px;
+  }
+
+  .followup-recommend-btn {
+    height: 32px;
+    padding: 5px 36px;
+  }
+
+  .followup-recommend-text {
+    font-size: 13px;
+  }
+}
+
+/* Small tablets (≤ 768px) */
+@media (max-width: 768px) {
+  .followup-popup-container {
+    width: 95vw;
+    max-width: 600px;
+    padding: 14px 16px;
+    gap: 6px;
+  }
+
+  .followup-close-btn {
+    top: 10px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .followup-close-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .followup-title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .followup-description {
+    font-size: 13px;
+    line-height: 17px;
+    padding: 0 8px;
+  }
+
+  .followup-recommend-btn {
+    height: 30px;
+    padding: 4px 32px;
+    border-radius: 6px;
+  }
+
+  .followup-recommend-text {
+    font-size: 12px;
+    line-height: 140%;
+  }
+}
+
+/* Mobile devices (≤ 480px) */
+@media (max-width: 480px) {
+  .followup-popup-container {
+    width: 98vw;
+    max-width: 400px;
+    padding: 12px 14px;
+    gap: 5px;
+    border-radius: 8px;
+  }
+
+  .followup-close-btn {
+    top: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .followup-close-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .followup-title {
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .followup-description {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 0 6px;
+  }
+
+  .followup-recommend-btn {
+    height: 28px;
+    padding: 3px 24px;
+    border-radius: 6px;
+  }
+
+  .followup-recommend-text {
+    font-size: 11px;
+    line-height: 140%;
+  }
+}
+
+/* Very small devices (≤ 320px) */
+@media (max-width: 320px) {
+  .followup-popup-container {
+    width: 99vw;
+    max-width: 300px;
+    padding: 10px 12px;
+    gap: 4px;
+    border-radius: 6px;
+  }
+
+  .followup-close-btn {
+    top: 6px;
+    right: 6px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .followup-close-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .followup-title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .followup-description {
+    font-size: 11px;
+    line-height: 15px;
+    padding: 0 4px;
+  }
+
+  .followup-recommend-btn {
+    height: 26px;
+    padding: 2px 20px;
+    border-radius: 4px;
+  }
+
+  .followup-recommend-text {
+    font-size: 10px;
+    line-height: 140%;
+  }
+}

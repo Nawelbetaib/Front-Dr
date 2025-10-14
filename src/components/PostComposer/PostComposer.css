@@ -1,0 +1,208 @@
+/* PostComposer Container */
+.post-composer-container {
+  display: flex;
+  width: 758px;
+  height: 194px;
+  padding: 11px 26px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--Foundation-Surface-color-White, #FFF);
+  box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.15);
+}
+
+/* Header Section */
+.post-composer-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Write Here Section */
+.write-here-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+}
+
+.write-here-text {
+  color: var(--foundation-dark-color-normal-active, #3D4C5E);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 114.286% */
+  width: 88px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+/* Visibility Section */
+.visibility-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.visibility-text {
+  color: var(--foundation-dark-color-normal-active, #3D4C5E);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px; /* 171.429% */
+}
+
+.toggle-switch {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.switch-svg {
+  width: 40px;
+  height: 20px;
+  transition: all 0.3s ease;
+}
+
+.switch-svg circle {
+  transition: all 0.3s ease;
+}
+
+/* Express Yourself Container */
+.express-yourself-container {
+  display: flex;
+  height: 79px;
+  padding: 15px 25px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1 0 0;
+  border-radius: 4px;
+  border: 0.25px solid var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  background: #F5F7F9;
+  width: 100%;
+}
+
+.express-yourself-textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  resize: none;
+  color: var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.express-yourself-textarea::placeholder {
+  color: var(--Foundation-Dark-color-Lighter, #B2BBC6);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Actions Section */
+.post-actions-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Media Buttons */
+.media-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.media-button {
+  display: flex;
+  height: 35px;
+  padding: 9px 18px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 4px;
+  background: #F5F7F9;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: none;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.media-button:hover {
+  background: #E8EAED;
+}
+
+.media-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.media-text {
+  color: var(--Foundation-Dark-color-Normal, #546881);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 114.286% */
+}
+
+/* Publish Button */
+.publish-button {
+  display: flex;
+  width: 179px;
+  height: 40px;
+  padding: 7px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  background: var(--Foundation-Primary-color-Normal, #4FC3F7);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.publish-button:hover {
+  background: #3FB8EC;
+}
+
+.publish-text {
+  color: var(--Foundation-Surface-color-White, #FFF);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 21px */
+}
+
+/* CSS Variables for consistency */
+:root {
+  --foundation-dark-color-normal-active: #3D4C5E;
+  --Foundation-Dark-color-Lighter: #B2BBC6;
+  --Foundation-Dark-color-Normal: #546881;
+  --Foundation-Primary-color-Normal: #4FC3F7;
+  --Foundation-Surface-color-White: #FFF;
+}
