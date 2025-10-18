@@ -1,15 +1,54 @@
-/* Post Card Container */
+/* =========================
+   Post Card Container
+   ========================= */
 .post-card {
   background: #FFFFFF;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  padding: 20px;
-  max-width: 600px;
-  width: 100%;
+  margin-bottom: 12px;
+  padding: 16px;
+  width: auto;
+  max-width: 100%;
+  border: none;
+  outline: none;
 }
 
-/* Header Section */
+/* =========================
+   PDF Full Bleed Container
+   ========================= */
+.pdf-container {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e6ebf1;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+.pdf-full-bleed {
+  margin: 0 -16px;
+  width: calc(100% + 32px);
+  border-radius: 0;
+}
+
+.pdf-iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+  display: block;
+}
+
+/* =========================
+   Reste du CSS (inchangé sauf suppression des règles conflictuelles)
+   ========================= */
+
+.post-card:focus,
+.post-card:hover {
+  outline: none;
+  border: none;
+}
+
 .post-header {
   display: flex;
   justify-content: space-between;
@@ -23,28 +62,10 @@
   gap: 12px;
 }
 
-.profile-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: #E8F4FD;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.profile-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.avatar-placeholder {
-  color: #4FC3F7;
-  font-weight: 600;
-  font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+.dr-avatar-icon {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain !important;
 }
 
 .profile-info {
@@ -71,37 +92,119 @@
   line-height: 1.2;
 }
 
-.more-options {
+.post-menu-wrapper {
+  margin-left: auto;
+  position: relative;
+}
+
+.post-menu-btn {
   background: none;
   border: none;
-  cursor: pointer;
   padding: 4px;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
+  cursor: pointer;
+  color: #65676b;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
 }
 
-.more-options:hover {
-  background: #F8F9FA;
+.post-menu-btn:hover {
+  background-color: #f2f3f5;
 }
 
-/* Content Section */
+.menu-dots {
+  font-size: 18px;
+  line-height: 1;
+  display: block;
+  text-align: center;
+}
+
+.post-menu {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  width: 300px;
+  background: #fff;
+  border: 1px solid #e6ebf1;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  z-index: 999;
+  display: none;
+}
+
+.post-menu.open {
+  display: block;
+}
+
+.post-menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #2b3a4d;
+  font: 500 14px Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  cursor: pointer;
+  text-align: left;
+}
+
+.post-menu-item:hover {
+  background: #f3f6f9;
+}
+
+.post-menu-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.post-menu-sep {
+  height: 1px;
+  background: #eef1f5;
+  margin: 6px 0;
+}
+
+.post-menu-item.danger {
+  color: #c0392b;
+}
+
+.post-menu-item.danger:hover {
+  background: #fdeceb;
+}
+
 .post-content {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .post-text {
-  color: #34495E;
-  font-family: 'Poppins', sans-serif;
+  color: var(--foundation-dark-color-normal-active, #3D4C5E);
+  text-align: justify;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 19px;
   margin: 0 0 8px 0;
+  height: 63px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .see-translation {
   background: none;
   border: none;
-  color: #4FC3F7;
+  color: #3F9CC6;
   font-family: 'Poppins', sans-serif;
   font-size: 13px;
   font-weight: 500;
@@ -116,9 +219,8 @@
   text-decoration: underline;
 }
 
-/* Image Section */
 .post-image {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -129,30 +231,58 @@
   display: block;
 }
 
-/* Actions Section */
+.post-image video,
+.post-image .preview-video {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border: 0;
+  margin: 0;
+}
+
+.post-image--auto {
+  height: auto !important;
+  overflow: visible !important;
+  min-height: 120px;
+}
+
+.attachment-item {
+  margin-bottom: 8px;
+}
+
+.postcontent-image {
+  width: 100% !important;
+  height: 250px !important;
+  object-fit: contain !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
 .post-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding-top: 12px;
-  border-top: 1px solid #E8E8E8;
+  gap: 12px;
+  padding-top: 10px;
   position: relative;
 }
 
 .action-button {
   display: flex;
+  height: 35px;
+  padding: 9px 18px;
   align-items: center;
   gap: 6px;
-  background: none;
+  border-radius: 4px;
+  background: #F5F7F9;
   border: none;
   cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 6px;
   transition: all 0.2s ease;
-  font-family: 'Poppins', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: #7F8C8D;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #546881;
 }
 
 .action-button:hover {
@@ -163,12 +293,13 @@
   flex-shrink: 0;
 }
 
-.like-button.liked {
-  color: #FF6B6B;
+.like-button.liked:hover {
+  background: #F8F9FA;
 }
 
-.like-button.liked:hover {
-  background: #FFF5F5;
+.comment-button.active {
+  background: #F5F7F9;
+  color: #546881;
 }
 
 .engagement-stats {
@@ -184,9 +315,260 @@
   font-family: 'Poppins', sans-serif;
   font-size: 13px;
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-/* Responsive Design */
+.likes-count svg,
+.comments-count svg {
+  flex-shrink: 0;
+}
+
+.comments-count {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.comments-count:hover {
+  text-decoration: underline;
+  color: #667a8f;
+}
+
+.pc-comments {
+  border-top: 1px solid #ECF0F1;
+  padding: 12px 0 2px 0;
+  margin-top: 12px;
+  background: #fff;
+}
+
+.pcc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pcc-item {
+  display: flex;
+  gap: 10px;
+}
+
+.pcc-av {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #E6F2F9;
+  display: block;
+}
+
+.pcc-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.pcc-line1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pcc-name {
+  font-weight: 600;
+  color: #2b3a4a;
+  font-size: 14px;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.pcc-title {
+  color: #7d8aa1;
+  font-size: 12px;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.pcc-time {
+  margin-left: auto;
+  color: #9aa6b2;
+  font-size: 12px;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.pcc-role {
+  color: #7d8aa1;
+  font-size: 12px;
+  margin-top: 2px;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.pcc-text {
+  color: #2f3a4a;
+  font-size: 14px;
+  margin-top: 4px;
+  line-height: 1.45;
+  font-family: Roboto, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+.pcc-empty {
+  text-align: center;
+  color: #9aa6b2;
+  font-size: 13px;
+  padding: 8px 0;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.pcc-more {
+  align-self: center;
+  margin: 6px 0 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #dbe2ea;
+  background: #fff;
+  color: #3F9CC6;
+  cursor: pointer;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 13px;
+}
+
+.pcc-more:hover {
+  background: #f7fbff;
+}
+
+.comment-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #ECF0F1;
+}
+
+.comment-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #DCDFE1;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.2s ease;
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: #3F9CC6;
+}
+
+.submit-comment-btn {
+  align-self: flex-end;
+  background: #3F9CC6;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-comment-btn:hover:not(:disabled) {
+  background: #3FB8EC;
+}
+
+.submit-comment-btn:disabled {
+  background: #B0BEC5;
+  cursor: not-allowed;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comment-item {
+  padding: 12px;
+  background: #F8F9FA;
+  border-radius: 8px;
+  border-left: 3px solid #3F9CC6;
+}
+
+.comment-author {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 4px;
+}
+
+.comment-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #3D4C5E;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.comment-time {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: #7F8C8D;
+}
+
+.comment-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 6px;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.icon-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.icon-btn:hover {
+  background: #F0F2F5;
+}
+
+.icon-btn svg {
+  display: block;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.edit-btn:hover svg path {
+  stroke: #3F9CC6;
+}
+
+.delete-btn:hover svg path {
+  stroke: #D9534F;
+}
+
 @media (max-width: 768px) {
   .post-card {
     padding: 16px;
@@ -203,4 +585,137 @@
     width: 100%;
     justify-content: space-between;
   }
+
+  .comment-input-container {
+    gap: 8px;
+  }
+
+  .submit-comment-btn {
+    align-self: stretch;
+  }
+
+  .post-menu {
+    width: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-image:not(.post-image--auto) video,
+  .post-image:not(.post-image--auto) .preview-video {
+    height: 200px !important;
+  }
+
+  .post-menu {
+    width: 240px;
+    top: 32px;
+  }
+}
+
+.post-cards-tight > .post-card {
+  margin-bottom: 8px;
+  padding: 12px;
+}
+
+.post-cards-tight {
+  gap: 8px !important;
+}
+
+.pcc-composer {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ECF0F1;
+  background: #FAFCFE;
+}
+
+.pcc-composer-label {
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 13px;
+  color: #546881;
+  margin-bottom: 6px;
+}
+
+.pcc-textarea {
+  width: 100%;
+  min-height: 72px;
+  resize: vertical;
+  padding: 10px 12px;
+  border: 1px solid #DCDFE1;
+  border-radius: 8px;
+  font-family: Roboto, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  color: #2f3a4a;
+  transition: border-color 0.2s ease;
+  background: #fff;
+}
+
+.pcc-textarea:focus {
+  outline: none;
+  border-color: #3F9CC6;
+  box-shadow: 0 0 0 2px rgba(63, 156, 198, 0.12);
+}
+
+.pcc-composer-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.pcc-btn {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 6px;
+  border: 1px solid #dbe2ea;
+  background: #fff;
+  color: #546881;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pcc-btn:hover {
+  background: #f7fbff;
+}
+
+.pcc-btn.primary {
+  background: #3F9CC6;
+  border-color: #3F9CC6;
+  color: #fff;
+}
+
+.pcc-btn.primary:hover {
+  background: #3FB8EC;
+  border-color: #3FB8EC;
+}
+
+.pcc-item .pcc-actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.pcc-action-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #3F9CC6;
+  font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pcc-action-link:hover {
+  text-decoration: underline;
+}
+
+.pcc-edit-area {
+  margin-top: 6px;
+}
+
+.pcc-edit-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 6px;
 }

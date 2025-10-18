@@ -1,9 +1,70 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import Cropper from 'react-easy-crop';
 import './PostComposer.css';
 
-const PostComposer = () => {
+/* ========== Helpers for cropping ========== */
+async function getCroppedDataURL(imageSrc, cropPixels, rotation = 0) {
+  const image = await new Promise((res, rej) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => res(img);
+    img.onerror = rej;
+    img.src = imageSrc;
+  });
+
+  const rads = (rotation * Math.PI) / 180;
+  const safeW = Math.ceil(Math.abs(image.width * Math.cos(rads)) + Math.abs(image.height * Math.sin(rads)));
+  const safeH = Math.ceil(Math.abs(image.width * Math.sin(rads)) + Math.abs(image.height * Math.cos(rads)));
+
+  const canvas = document.createElement('canvas');
+  canvas.width = safeW;
+  canvas.height = safeH;
+  const ctx = canvas.getContext('2d');
+
+  ctx.translate(safeW / 2, safeH / 2);
+  ctx.rotate(rads);
+  ctx.drawImage(image, -image.width / 2, -image.height / 2);
+  ctx.rotate(-rads);
+  ctx.translate(-safeW / 2, -safeH / 2);
+
+  const { x, y, width, height } = cropPixels;
+  const data = ctx.getImageData(x, y, width, height);
+
+  const out = document.createElement('canvas');
+  out.width = width;
+  out.height = height;
+  const outCtx = out.getContext('2d');
+  outCtx.putImageData(data, 0, 0);
+
+  return out.toDataURL('image/jpeg', 0.92);
+}
+
+function dataURLtoFile(dataurl, filename = 'cropped.jpg') {
+  const [head, body] = dataurl.split(',');
+  const mime = head.match(/:(.*?);/)?.[1] || 'image/jpeg';
+  const bin = atob(body);
+  const len = bin.length;
+  const u8 = new Uint8Array(len);
+  for (let i = 0; i < len; i++) u8[i] = bin.charCodeAt(i);
+  return new File([u8], filename, { type: mime });
+}
+
+const PostComposer = ({ onPublish }) => {
   const [isVisibleToDoctorsOnly, setIsVisibleToDoctorsOnly] = useState(false);
   const [postContent, setPostContent] = useState('');
+  const [attachedFiles, setAttachedFiles] = useState([]); // State pour les fichiers attachés
+  const imageInputRef = useRef(null);
+  const videoInputRef = useRef(null);
+  const docInputRef = useRef(null);
+
+  // Crop editor state
+  const [editorOpen, setEditorOpen] = useState(false);
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [rotation, setRotation] = useState(0);
+  const [croppedPixels, setCroppedPixels] = useState(null);
+  const [aspect, setAspect] = useState(4 / 5);
 
   const handleToggleVisibility = () => {
     setIsVisibleToDoctorsOnly(!isVisibleToDoctorsOnly);
@@ -14,26 +75,174 @@ const PostComposer = () => {
   };
 
   const handlePublish = () => {
-    // Logic for publishing the post
     console.log('Publishing post:', {
       content: postContent,
-      visibleToDoctorsOnly: isVisibleToDoctorsOnly
+      visibleToDoctorsOnly: isVisibleToDoctorsOnly,
+      attachedFiles: attachedFiles.map(f => ({
+        name: f.name,
+        type: f.type,
+        size: f.size
+      }))
     });
+
+    const newPost = {
+      id: Date.now(),
+      doctorName: "Vous",
+      timeAgo: new Date().toLocaleString(),
+      content: postContent || '',
+      attachments: attachedFiles.map(f => ({ id: f.id, type: f.type, preview: f.preview, name: f.name, size: f.size })),
+      image: attachedFiles.length > 0 ? attachedFiles[0].preview : null,
+      hasTranslation: false,
+      likes: 0,
+      comments: 0,
+      profileImage: null,
+      usePostContentIcon: false
+    };
+
+    if (typeof onPublish === 'function') {
+      onPublish(newPost);
+    }
+
+    setPostContent('');
+    setAttachedFiles([]);
   };
 
   const handleImageUpload = () => {
-    // Logic for image upload
-    console.log('Image upload clicked');
+    if (imageInputRef.current) imageInputRef.current.click();
   };
 
   const handleVideoUpload = () => {
-    // Logic for video upload
-    console.log('Video upload clicked');
+    if (videoInputRef.current) videoInputRef.current.click();
   };
 
   const handleDocumentUpload = () => {
-    // Logic for document upload
-    console.log('Document upload clicked');
+    if (docInputRef.current) docInputRef.current.click();
+  };
+
+  const readFileAsDataURL = (file) =>
+    new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.onload = () => res(reader.result);
+      reader.onerror = rej;
+      reader.readAsDataURL(file);
+    });
+
+  const extractFrameFromVideo = (file) =>
+    new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file);
+      const video = document.createElement('video');
+      video.preload = 'metadata';
+      video.src = url;
+      video.muted = true;
+      video.playsInline = true;
+
+      const cleanup = () => {
+        URL.revokeObjectURL(url);
+        video.removeAttribute('src');
+      };
+
+      const onLoaded = () => {
+        const seekTo = Math.min(0.1, Math.max(0.0, 0.1));
+        const onSeeked = () => {
+          try {
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth || 320;
+            canvas.height = video.videoHeight || 180;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const dataURL = canvas.toDataURL('image/jpeg', 0.9);
+            cleanup();
+            resolve(dataURL);
+          } catch (err) {
+            cleanup();
+            reject(err);
+          }
+        };
+        video.currentTime = seekTo;
+        video.addEventListener('seeked', onSeeked, { once: true });
+      };
+
+      video.addEventListener('loadeddata', onLoaded, { once: true });
+      video.addEventListener('error', (e) => {
+        cleanup();
+        reject(e);
+      });
+    });
+
+  const handleFilesSelected = async (e, type) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
+
+    const newItems = [];
+    for (const file of files) {
+      const id = Math.random().toString(36).substring(2, 11);
+      try {
+        if (type === 'image') {
+          const data = await readFileAsDataURL(file);
+          newItems.push({ id, file, type: 'image', name: file.name, size: file.size, preview: data });
+        } else if (type === 'video') {
+          let thumb = null;
+          try { thumb = await extractFrameFromVideo(file); } catch (err) { console.warn('thumb fail', err); }
+          newItems.push({ id, file, type: 'video', name: file.name, size: file.size, preview: thumb });
+        } else if (type === 'document') {
+          const data = await readFileAsDataURL(file);
+          newItems.push({ id, file, type: 'document', name: file.name, size: file.size, preview: data });
+        }
+      } catch (err) {
+        console.error('file read error', err);
+      }
+    }
+
+    if (newItems.length) setAttachedFiles((prev) => [...prev, ...newItems]);
+    e.target.value = '';
+  };
+
+  const handleRemoveFile = (fileId) => {
+    setAttachedFiles((prev) => prev.filter((f) => f.id !== fileId));
+  };
+
+  const openEditor = (index) => {
+    if (!attachedFiles[index] || !attachedFiles[index].preview) return;
+    setEditingIndex(index);
+    setEditorOpen(true);
+    setZoom(1);
+    setRotation(0);
+    setCrop({ x: 0, y: 0 });
+    setAspect(4 / 5);
+  };
+
+  const onCropComplete = (_, croppedAreaPixels) => {
+    setCroppedPixels(croppedAreaPixels);
+  };
+
+  const applyCrop = async () => {
+    if (editingIndex == null || !croppedPixels) {
+      setEditorOpen(false);
+      return;
+    }
+    try {
+      const src = attachedFiles[editingIndex].preview;
+      const dataUrl = await getCroppedDataURL(src, croppedPixels, rotation);
+
+      setAttachedFiles((prev) =>
+        prev.map((f, i) => {
+          if (i !== editingIndex) return f;
+          const updated = { ...f, preview: dataUrl };
+          if (f.file && f.file.type && f.file.type.startsWith('image/')) {
+            try {
+              const newFile = dataURLtoFile(dataUrl, f.file.name || 'cropped.jpg');
+              updated.file = newFile;
+            } catch (err) {
+              console.warn('Failed to replace file with cropped version', err);
+            }
+          }
+          return updated;
+        })
+      );
+    } finally {
+      setEditorOpen(false);
+      setEditingIndex(null);
+    }
   };
 
   return (
@@ -83,6 +292,95 @@ const PostComposer = () => {
         />
       </div>
 
+      {/* Preview Media - Affiche les images, vidéos et documents en grand */}
+      {attachedFiles.length > 0 && (
+        <div className="preview-images-container">
+          {attachedFiles.map((fileItem, index) => (
+            <div key={fileItem.id} className="preview-image">
+              {/* Image Preview */}
+              {fileItem.type === 'image' && fileItem.preview && (
+                <img src={fileItem.preview} alt={fileItem.name} className="preview-img" />
+              )}
+
+              {/* Video Preview */}
+              {fileItem.type === 'video' && fileItem.preview && (
+                <video src={fileItem.preview} controls className="preview-video" />
+              )}
+
+              {/* Document Preview */}
+              {fileItem.type === 'document' && fileItem.preview && (
+                <iframe
+                  src={fileItem.preview}
+                  className="preview-document"
+                  title={fileItem.name}
+                />
+              )}
+
+              {/* Bottom controls: Edit (left) and Remove (right) — same for all */}
+              <div className="preview-edit">
+                {fileItem.type !== 'document' && (
+                  <button className="edit-photo-btn" type="button" onClick={() => openEditor(index)} title="Edit (crop)">✎ Edit</button>
+                )}
+                {/* ✅ Remove button for ALL types, including document */}
+                <button
+                  className="remove-photo-btn"
+                  onClick={() => handleRemoveFile(fileItem.id)}
+                  aria-label={`Supprimer ${fileItem.name}`}
+                  type="button"
+                  title="Remove file"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Cropper Modal */}
+      {editorOpen && editingIndex != null && (
+        <div className="cropper-backdrop" role="dialog" aria-modal="true">
+          <div className="cropper-modal">
+            <div className="cropper-header">
+              <strong>Adjust image</strong>
+              <button className="cropper-close" onClick={() => setEditorOpen(false)} type="button">✕</button>
+            </div>
+
+            <div className="cropper-area">
+              <Cropper
+                image={attachedFiles[editingIndex]?.preview}
+                crop={crop}
+                zoom={zoom}
+                aspect={aspect}
+                onCropChange={setCrop}
+                onZoomChange={setZoom}
+                onRotationChange={setRotation}
+                onCropComplete={onCropComplete}
+                restrictPosition={false}
+              />
+            </div>
+
+            <div className="cropper-controls">
+              <label className="ctrl">Zoom
+                <input type="range" min={1} max={3} step={0.01} value={zoom} onChange={(e) => setZoom(Number(e.target.value))} />
+              </label>
+
+              <div className="aspect-group">
+                <span>Aspect</span>
+                <button className={`asp ${aspect === 1 ? 'active' : ''}`} onClick={() => setAspect(1)} type="button">1:1</button>
+                <button className={`asp ${aspect === 4 / 5 ? 'active' : ''}`} onClick={() => setAspect(4 / 5)} type="button">4:5</button>
+                <button className={`asp ${aspect === 16 / 9 ? 'active' : ''}`} onClick={() => setAspect(16 / 9)} type="button">16:9</button>
+              </div>
+            </div>
+
+            <div className="cropper-actions">
+              <button className="btn-secondary" onClick={() => setEditorOpen(false)} type="button">Cancel</button>
+              <button className="btn-primary" onClick={applyCrop} type="button">Apply</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Actions Section */}
       <div className="post-actions-section">
         <div className="media-buttons">
@@ -115,6 +413,32 @@ const PostComposer = () => {
             </svg>
             <span className="media-text">Document</span>
           </div>
+
+          {/* Hidden file inputs */}
+          <input
+            type="file"
+            ref={imageInputRef}
+            accept="image/*"
+            style={{ display: 'none' }}
+            multiple
+            onChange={(e) => handleFilesSelected(e, 'image')}
+          />
+          <input
+            type="file"
+            ref={videoInputRef}
+            accept="video/*"
+            style={{ display: 'none' }}
+            multiple
+            onChange={(e) => handleFilesSelected(e, 'video')}
+          />
+          <input
+            type="file"
+            ref={docInputRef}
+            accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            style={{ display: 'none' }}
+            multiple
+            onChange={(e) => handleFilesSelected(e, 'document')}
+          />
         </div>
 
         {/* Publish Button */}

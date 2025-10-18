@@ -10,13 +10,27 @@ import { ROUTE_PATHS } from './routePaths';
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Route par défaut - redirige vers Doctor */}
-      <Route path={ROUTE_PATHS.HOME} element={<Navigate to={ROUTE_PATHS.DOCTOR} replace />} />
+      {/* Route par défaut - redirige vers Home */}
+      <Route path={ROUTE_PATHS.HOME} element={<Navigate to="/Home" replace />} />
 
-      {/* Route principale Doctor */}
-      <Route path={ROUTE_PATHS.DOCTOR} element={<Doctor />} />
+      {/* Route principale Doctor - redirige vers Home */}
+      <Route path={ROUTE_PATHS.DOCTOR} element={<Navigate to="/Home" replace />} />
 
-      {/* Routes Doctor avec sous-chemins (pour navigation future) */}
+      {/* Routes de navigation de la sidebar */}
+      <Route path="/Home" element={<Doctor />} />
+      <Route path="/profile" element={<Doctor />} />
+      <Route path="/availability" element={<Doctor />} />
+      <Route path="/appointments" element={<Doctor />} />
+      <Route path="/messages" element={<Doctor />} />
+      <Route path="/patients" element={<Doctor />} />
+      <Route path="/pharmacy" element={<Doctor />} />
+      <Route path="/clinics" element={<Doctor />} />
+      <Route path="/analysis-lab" element={<Doctor />} />
+      <Route path="/nurses" element={<Doctor />} />
+      <Route path="/medical-questions" element={<Doctor />} />
+      <Route path="/settings" element={<Doctor />} />
+
+      {/* Routes Doctor avec sous-chemins (pour compatibilité) */}
       <Route path={ROUTE_PATHS.DOCTOR_DASHBOARD} element={<Doctor />} />
       <Route path={ROUTE_PATHS.DOCTOR_PROFILE} element={<Doctor />} />
       <Route path={ROUTE_PATHS.DOCTOR_PATIENTS} element={<Doctor />} />
@@ -30,8 +44,8 @@ const AppRoutes = () => {
       <Route path={ROUTE_PATHS.DOCTOR_AVAILABILITY} element={<Doctor />} />
       <Route path={ROUTE_PATHS.DOCTOR_SETTINGS} element={<Doctor />} />
 
-      {/* Route 404 - toute route non trouvée redirige vers Doctor */}
-      <Route path="*" element={<Navigate to={ROUTE_PATHS.DOCTOR} replace />} />
+      {/* Route 404 - toute route non trouvée redirige vers Home */}
+      <Route path="*" element={<Navigate to="/Home" replace />} />
     </Routes>
   );
 };

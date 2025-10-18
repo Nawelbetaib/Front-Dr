@@ -9,6 +9,22 @@
   border-radius: 8px;
   background: #FFF;
   box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.15);
+
+  /* ✅ Centrage parfait dans le container parent */
+  margin: 0 auto;
+
+  /* ✅ Supprime toutes les bordures possibles */
+  border: none;
+  outline: none;
+}
+
+/* ✅ Supprime les bordures sur tous les états du container */
+.calendar-container:focus,
+.calendar-container:focus-within,
+.calendar-container:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: 0 4px 4px 0 rgba(185, 185, 185, 0.15) !important;
 }
 
 /* Calendar Header */
@@ -28,6 +44,10 @@
   align-items: center;
   justify-content: center;
   transition: opacity 0.2s ease;
+
+  /* ✅ Supprime la bordure bleue lors du focus/clic */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-button:hover {

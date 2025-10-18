@@ -1,59 +1,97 @@
-/* Feed Container - Layout principal */
+/* * Feed Container - Layout principal avec CSS Grid */
 .feed-container {
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Deux colonnes côte à côte */
+  grid-template-rows: 1fr; /* Une seule ligne */
+
+  /* ✅ Alignement parfait avec SubMenu - même système que app-header */
+  max-width: var(--page-max, 1224px);
+  margin: 20px auto 0 auto; /* Centré avec marge top */
+
+  /* Compensation du padding parent (.app-layout__content a padding: 20px) */
+  /* Le header total: 20px (.app-header-container) + 34px (.app-header__bar --tabs-side-pad) = 54px */
+  /* Le Feed doit avoir: 54px - 20px (.app-layout__content) = 34px pour s'aligner */
+  padding-left: var(--tabs-side-pad, 34px);
+  padding-right: var(--tabs-side-pad, 34px);
+  box-sizing: border-box;
+  gap: 40px; /* Gap entre post-composer et calendar */
   min-height: 100vh;
-  background-color: #f5f7fa;
+  background-color: transparent;
+  align-items: start;
 }
 
-/* Colonne principale (gauche) - Posts */
+/* Section principale (gauche) - Posts - Grid Item 2fr */
 .main-content {
-  flex: 1;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  grid-column: 1; /* Première colonne du grid */
+  display: grid;
+  grid-template-rows: auto 1fr; /* PostComposer auto, Posts prennent le reste */
+  gap: 24px; /* Espacement parfait entre PostComposer et Posts */
+  min-width: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
-/* Section compositeur de post */
+/* Section compositeur de post - Grid Item auto */
 .post-composer-section {
+  grid-row: 1;
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  min-height: fit-content;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-/* Section des posts */
+/* Section des posts - Grid Item 1fr */
 .posts-section {
+  grid-row: 2;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px; /* Espacement parfait entre les posts */
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px; /* Espace pour la scrollbar */
+  padding-left: 0;
+  width: 100%;
+  margin: 0;
 }
 
 .post-item {
-  background: white;
+  background: transparent; /* Supprime le background blanc */
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: none; /* Supprime aussi l'ombre */
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+  border: none !important;
+  outline: none !important;
+}
+
+.post-item:focus,
+.post-item:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .post-item:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: none; /* Supprime l'ombre au hover */
 }
 
-/* Sidebar droite */
+/* Section latérale droite - Grid Item 1fr */
 .sidebar {
-  width: 320px;
+  grid-column: 2; /* Deuxième colonne du grid */
   display: flex;
   flex-direction: column;
   gap: 24px;
   position: sticky;
   top: 20px;
   height: fit-content;
+  min-width: 0; /* Permet au contenu de se réduire si nécessaire */
+  width: 100%; /* Utilise tout l'espace alloué par le grid */
 }
 
 /* Section calendrier */
@@ -62,11 +100,26 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  margin-top: 0; /* Aligné avec le post-composer */
 }
 
 /* Section bannière publicitaire */
 .ad-banner-section {
   /* Le composant AdBanner a déjà ses propres styles */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ad-banner-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.ad-banner-section:active {
+  transform: translateY(0);
 }
 
 /* Section invitation d'amis */
@@ -80,51 +133,100 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .feed-container {
-    max-width: 100%;
-    padding: 16px;
-    gap: 20px;
-  }
-
-  .sidebar {
-    width: 280px;
-  }
-}
-
-@media (max-width: 768px) {
-  .feed-container {
-    flex-direction: column;
-    padding: 12px;
-    gap: 16px;
+    display: grid; /* Force le grid sur tablettes */
+    grid-template-columns: 2fr 1fr; /* Maintient le ratio 2:1 */
+    grid-template-rows: 1fr; /* Une seule ligne */
+    max-width: none; /* Pas de limite de largeur */
+    margin: 0; /* Aligné à gauche */
+    padding-left: calc(max((100% - var(--page-max)) / 2, 0px) + var(--tabs-side-pad, 34px));
+    padding-right: calc(max((100% - var(--page-max)) / 2, 0px) + var(--tabs-side-pad, 34px));
+    gap: 32px; /* Gap maintenu entre post-composer et calendar */
+    --feed-top-gap: 14px;
+    margin-top: var(--feed-top-gap);
   }
 
   .main-content {
-    max-width: 100%;
+    grid-column: 1; /* Première colonne */
+    padding: 0; /* Aucun padding - au maximum à gauche */
+    margin: 0; /* Aucune marge */
   }
 
   .sidebar {
-    width: 100%;
+    grid-column: 2; /* Deuxième colonne */
+  }
+}
+
+/* Écrans moyens - Ajuste légèrement les proportions */
+@media (max-width: 900px) {
+  .feed-container {
+    display: grid; /* Force le grid même sur écrans moyens */
+    grid-template-columns: 5fr 3fr; /* Ratio 5:3 pour plus d'espace au contenu */
+    grid-template-rows: 1fr; /* Une seule ligne */
+    max-width: none; /* Pas de limite de largeur */
+    margin: 0; /* Aligné à gauche */
+    gap: 24px; /* Gap réduit mais visible entre post-composer et calendar */
+    padding: 0; /* Pas de padding sur écrans moyens */
+  }
+
+  .main-content {
+    grid-column: 1; /* Première colonne */
+    gap: 18px; /* Réduit l'espacement sur écrans moyens */
+    padding: 0; /* Aucun padding - au maximum à gauche */
+    margin: 0; /* Aucune marge */
+  }
+
+  .sidebar {
+    grid-column: 2; /* Deuxième colonne */
+  }
+
+  .posts-section {
+    gap: 18px; /* Réduit l'espacement entre les posts */
+  }
+}
+
+/* Mobile - Passe en layout colonne */
+@media (max-width: 768px) {
+  .feed-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--tabs-side-pad, 16px); /* Small padding on mobile */
+    padding-right: var(--tabs-side-pad, 16px);
+    gap: 20px; /* Gap plus visible entre sections sur mobile */
+    --feed-top-gap: 10px;
+    margin-top: var(--feed-top-gap);
+    /* Sur mobile on veut que le feed prenne toute la largeur disponible */
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .main-content {
+    order: 2; /* Contenu principal après la sidebar */
+    display: grid;
+    grid-template-rows: auto 1fr; /* Maintient le grid même sur mobile */
+    gap: 16px;
+    min-height: 60vh; /* Hauteur réduite sur mobile */
+    padding: 0; /* Aucun padding - au maximum à gauche */
+    margin: 0; /* Aucune marge */
+  }
+
+  .sidebar {
     position: static;
-    order: -1; /* Mettre la sidebar en haut sur mobile */
-  }
-
-  /* Sur mobile, on peut réorganiser l'ordre des éléments de la sidebar */
-  .sidebar {
+    order: 1; /* Sidebar en premier sur mobile */
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
 
-  /* Calendrier en premier sur mobile */
+  /* Ordre des éléments dans la sidebar mobile */
   .calendar-section {
     order: 1;
   }
 
-  /* Bannière EMSLIM en deuxième */
   .ad-banner-section {
     order: 2;
   }
 
-  /* Invitation d'amis en dernier */
   .invite-friends-section {
     order: 3;
   }
@@ -132,12 +234,18 @@
 
 @media (max-width: 480px) {
   .feed-container {
-    padding: 8px;
+    padding-left: var(--tabs-side-pad, 12px);
+    padding-right: var(--tabs-side-pad, 12px);
     gap: 12px;
   }
 
+  .main-content {
+    gap: 12px; /* Espacement réduit sur très petits écrans */
+    min-height: 50vh; /* Hauteur encore plus réduite */
+  }
+
   .posts-section {
-    gap: 16px;
+    gap: 12px; /* Espacement réduit entre les posts */
   }
 
   .sidebar {
@@ -167,14 +275,8 @@
 @media (min-width: 1400px) {
   .feed-container {
     max-width: 1400px;
-  }
-
-  .main-content {
-    max-width: 700px;
-  }
-
-  .sidebar {
-    width: 360px;
+    grid-template-columns: 2fr 1fr; /* Maintient le ratio parfait 2:1 */
+    gap: 32px; /* Plus d'espace sur grands écrans */
   }
 }
 
@@ -220,28 +322,20 @@
   }
 }
 
-/* Focus states pour l'accessibilité clavier */
-.post-item:focus-within,
-.calendar-section:focus-within,
-.invite-friends-section:focus-within {
-  outline: 2px solid #4A90E2;
-  outline-offset: 2px;
-}
-
 /* Styles pour le mode sombre (préparation future) */
 @media (prefers-color-scheme: dark) {
   .feed-container {
-    background-color: #1a1a1a;
+    background-color: transparent; /* Pas de background en mode sombre non plus */
   }
 
   .post-item,
   .calendar-section,
   .invite-friends-section {
-    background: #2d2d2d;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    background: transparent; /* Pas de background en mode sombre non plus */
+    box-shadow: none; /* Pas d'ombre en mode sombre */
   }
 
   .post-item:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: none; /* Pas d'ombre au hover en mode sombre */
   }
 }

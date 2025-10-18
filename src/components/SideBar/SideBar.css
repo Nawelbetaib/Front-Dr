@@ -192,38 +192,38 @@
   margin-bottom: 20px !important;
 }
 
-/* ====== PROFILE MENU ITEM - COULEURS SPÉCIFIQUES ====== */
-.sb__menu .ant-menu-item.profile-menu-item {
+/* ====== TOUS LES MENU ITEMS SÉLECTIONNÉS - STYLE UNIFORME ====== */
+.sb__menu .ant-menu-item.menu-item-selected {
   background: rgba(219, 234, 254, 1) !important;
   color: #1D242D !important;
 }
 
-.sb__menu .ant-menu-item.profile-menu-item .sb__menu-label {
+.sb__menu .ant-menu-item.menu-item-selected .sb__menu-label {
   color: #1D242D !important;
 }
 
-.sb__menu .ant-menu-item.profile-menu-item .sb-icon {
+.sb__menu .ant-menu-item.menu-item-selected .sb-icon {
   color: #1D242D !important;
 }
 
-.sb__menu .ant-menu-item.profile-menu-item .sb-icon svg {
+.sb__menu .ant-menu-item.menu-item-selected .sb-icon svg {
   stroke: #1D242D !important;
 }
 
-/* Hover state pour Profile */
-.sb__menu .ant-menu-item.profile-menu-item:hover {
+/* Hover state pour tous les éléments sélectionnés */
+.sb__menu .ant-menu-item.menu-item-selected:hover {
   background: rgba(219, 234, 254, 0.8) !important;
   color: #1D242D !important;
 }
 
-.sb__menu .ant-menu-item.profile-menu-item:hover .sb__menu-label {
+.sb__menu .ant-menu-item.menu-item-selected:hover .sb__menu-label {
   color: #1D242D !important;
 }
 
-.sb__menu .ant-menu-item.profile-menu-item:hover .sb-icon {
+.sb__menu .ant-menu-item.menu-item-selected:hover .sb-icon {
   color: #1D242D !important;
 }
 
-.sb__menu .ant-menu-item.profile-menu-item:hover .sb-icon svg {
+.sb__menu .ant-menu-item.menu-item-selected:hover .sb-icon svg {
   stroke: #1D242D !important;
 }

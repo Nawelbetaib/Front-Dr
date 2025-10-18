@@ -169,7 +169,7 @@ export default function SideBar({ collapsed = false }) {
     itemsTop.find((i) => i.key !== "/" && pathname === i.key)?.key ||
     itemsTop.find((i) => pathname.startsWith(String(i.key).replace(/\/:.*$/, "")))?.key ||
     itemsBottom.find((i) => pathname === i.key)?.key ||
-    "/profile"; // Profile sélectionné par défaut selon l'image
+    "/Home"; // Home sélectionné par défaut
 
   const handleMenuClick = ({ key }) => {
     if (!key) return;
@@ -201,7 +201,7 @@ export default function SideBar({ collapsed = false }) {
                   {i.label}
                 </span>
               ),
-              className: i.key === "/profile" ? "profile-menu-item" : "",
+              className: selectedKey === i.key ? "menu-item-selected" : "",
               "data-menu-id": i.key,
             }))}
           />
@@ -222,6 +222,7 @@ export default function SideBar({ collapsed = false }) {
                 {i.label}
               </span>
             ),
+            className: selectedKey === i.key ? "menu-item-selected" : "",
             "data-menu-id": i.key,
           }))}
         />
